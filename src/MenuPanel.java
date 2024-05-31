@@ -37,9 +37,7 @@ public class MenuPanel {
         menuPanel.add(PvP);
         menuPanel.add(QUIT);
         frame.add(menuPanel);
-        PvP.addActionListener(e-> startGame(new PlayerVsPlayer(frame, textfield)));
-        PvC.addActionListener(e-> startGame(new PlayerVsComputer(frame, textfield)));
-        QUIT.addActionListener(e-> System.exit(0));
+
     }
     private JButton createMenuButton(String text) {
         JButton button = new JButton(text);
