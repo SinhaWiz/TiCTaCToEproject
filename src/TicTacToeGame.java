@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 abstract class TicTacToeGame implements ActionListener {
-    protected JFrame frame;
-    protected JPanel buttonPanel;
-    protected JButton[] buttons;
-    protected JLabel textfield;
-    protected boolean player1Turn;
+    public JFrame frame;
+    public JPanel buttonPanel;
+    public JButton[] buttons;
+    public JLabel textfield;
+    public boolean player1Turn;
     public TicTacToeGame(JFrame frame, JLabel textfield) {
         this.frame = frame;
         this.textfield = textfield;
