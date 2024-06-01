@@ -37,10 +37,10 @@ abstract class TicTacToeGame implements ActionListener {
             textfield.setText("X turn");
         } else {
             textfield.setText("O turn");
-//            if (this instanceof PlayerVsComputer) {
-//                ((PlayerVsComputer) this).computerMove();
-//
-//            }
+           if (this instanceof PlayerVsComputer) {
+                ((PlayerVsComputer) this).computerMove();
+
+           }
         }
     }
     @Override
