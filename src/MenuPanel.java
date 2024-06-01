@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class MenuPanel {
     private JFrame frame;
     private JPanel menuPanel;
@@ -9,6 +11,7 @@ public class MenuPanel {
         frame = new JFrame();
         menuPanel = new JPanel();
         textfield = new JLabel();
+
         setupFrame();
         setupMenu();
     }
@@ -19,6 +22,7 @@ public class MenuPanel {
         frame.setVisible(true);
         frame.setResizable(false);
     }
+
     private void setupMenu() {
         menuPanel.setBackground(new Color(0, 0, 0));
         menuPanel.setForeground(new Color(45, 227, 211));
@@ -37,13 +41,15 @@ public class MenuPanel {
         menuPanel.add(PvP);
         menuPanel.add(QUIT);
         frame.add(menuPanel);
-        PvP.addActionListener(e-> startGame(new PlayerVsPlayer(frame, textfield)));
+        PvP.addActionListener(e -> startGame(new PlayerVsPlayer(frame, textfield)));
+        PvC.addActionListener(e -> startGame(new PlayerVsComputer(frame, textfield)));
+        QUIT.addActionListener(e -> System.exit(0));
     }
     private JButton createMenuButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("MV Boli", Font.BOLD, 40));
+        button.setFont(new Font("MV Bola", Font.BOLD, 40));
         button.setBackground(new Color(215, 232, 208));
-        button.setForeground(new Color(199, 148, 193));
+        button.setForeground(new Color(196, 16, 109));
         button.setPreferredSize(new Dimension(500, 200));
         return button;
     }

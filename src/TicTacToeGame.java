@@ -23,7 +23,7 @@ abstract class TicTacToeGame implements ActionListener {
             buttons[i] = new JButton();
             buttonPanel.add(buttons[i]);
             buttons[i].setFont(new Font("", Font.BOLD, 120));
-            buttons[i].setBackground(new Color(211, 225, 211));
+            buttons[i].setBackground(new Color(195, 231, 195));
             buttons[i].setFocusable(false);
             buttons[i].addActionListener(this);
         }
@@ -37,29 +37,24 @@ abstract class TicTacToeGame implements ActionListener {
             textfield.setText("X turn");
         } else {
             textfield.setText("O turn");
-//            if (this instanceof PlayerVsComputer) {
-//                ((PlayerVsComputer) this).computerMove();
-//
-//            }
+            if (this instanceof PlayerVsComputer) {
+                ((PlayerVsComputer) this).computerMove();
+            }
         }
     }
     @Override
     public abstract void actionPerformed(ActionEvent e);
-    protected boolean checkWin(String player) {
-        if( (buttons[0].getText().equals(player) && buttons[1].getText().equals(player) && buttons[2].getText().equals(player)) ||
+    public boolean checkWin(String player) {
+        return (buttons[0].getText().equals(player) && buttons[1].getText().equals(player) && buttons[2].getText().equals(player)) ||
                 (buttons[3].getText().equals(player) && buttons[4].getText().equals(player) && buttons[5].getText().equals(player)) ||
                 (buttons[6].getText().equals(player) && buttons[7].getText().equals(player) && buttons[8].getText().equals(player)) ||
                 (buttons[0].getText().equals(player) && buttons[3].getText().equals(player) && buttons[6].getText().equals(player)) ||
                 (buttons[1].getText().equals(player) && buttons[4].getText().equals(player) && buttons[7].getText().equals(player)) ||
                 (buttons[2].getText().equals(player) && buttons[5].getText().equals(player) && buttons[8].getText().equals(player)) ||
                 (buttons[0].getText().equals(player) && buttons[4].getText().equals(player) && buttons[8].getText().equals(player)) ||
-                (buttons[2].getText().equals(player) && buttons[4].getText().equals(player) && buttons[6].getText().equals(player)))
-        {
-            return true;
-        }
-        return false;
+                (buttons[2].getText().equals(player) && buttons[4].getText().equals(player) && buttons[6].getText().equals(player));
     }
-    protected void check() {
+    public void check() {
         if (checkWin("X")) {
             xWins();
         } else if (checkWin("O")) {
@@ -80,14 +75,13 @@ abstract class TicTacToeGame implements ActionListener {
         textfield.setText("X wins");
         disableButtons();
     }
-    protected void oWins() {
+    public void oWins() {
         textfield.setText("O wins");
         disableButtons();
     }
-    protected void disableButtons() {
+    public void disableButtons() {
         for (JButton button : buttons) {
             button.setEnabled(false);
         }
     }
 }
-
