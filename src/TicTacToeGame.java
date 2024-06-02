@@ -71,7 +71,7 @@ abstract class TicTacToeGame implements ActionListener {
         }
         return true;
     }
-    protected void xWins() {
+    public void xWins() {
         textfield.setText("X wins");
         disableButtons();
     }

@@ -3,11 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 class PlayerVsComputer extends TicTacToeGame {
-
+    JButton returnButton;
     public PlayerVsComputer(JFrame frame, JLabel textfield) {
         super(frame, textfield);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < 9; i++) {
@@ -55,7 +54,6 @@ class PlayerVsComputer extends TicTacToeGame {
         if (isBoardFull()) {
             return 0;
         }
-
         if (isMaximizing) {
             int bestScore = Integer.MIN_VALUE;
             for (int i = 0; i < 9; i++) {

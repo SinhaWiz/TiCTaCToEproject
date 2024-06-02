@@ -1,17 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-public class MenuPanel {
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+public class MenuPanel  implements MouseListener {
     private JFrame frame;
     private JPanel menuPanel;
     private JLabel textfield;
     private JButton PvC, PvP, QUIT;
+    public JFrame getFrame() {
+        return frame;
+    }
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
     public MenuPanel() {
         frame = new JFrame();
         menuPanel = new JPanel();
         textfield = new JLabel();
-
         setupFrame();
         setupMenu();
     }
@@ -21,8 +27,7 @@ public class MenuPanel {
         frame.getContentPane().setBackground(new Color(73, 73, 73));
         frame.setVisible(true);
         frame.setResizable(false);
-    }
-
+            }
     private void setupMenu() {
         menuPanel.setBackground(new Color(0, 0, 0));
         menuPanel.setForeground(new Color(45, 227, 211));
@@ -33,9 +38,12 @@ public class MenuPanel {
         textfield.setHorizontalAlignment(JLabel.CENTER);
         textfield.setText("Tic-Tac-Toe");
         textfield.setOpaque(true);
-        PvC = createMenuButton("Player vs Computer");
-        PvP = createMenuButton("Player vs Player");
-        QUIT = createMenuButton("QUIT");
+        PvC = createMenuButton(" Player  Vs  Computer ");
+        PvP = createMenuButton(" Player  Vs  Player ");
+        QUIT = createMenuButton("  QUIT  ");
+        PvC.addMouseListener(this);
+        PvP.addMouseListener(this);
+        QUIT.addMouseListener(this);
         menuPanel.add(textfield);
         menuPanel.add(PvC);
         menuPanel.add(PvP);
@@ -62,5 +70,22 @@ public class MenuPanel {
         frame.revalidate();
         frame.repaint();
         game.firstTurn();
+    }
+    @Override
+    public void mouseClicked(MouseEvent e) {
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        frame.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+    @Override
+    public void mouseExited(MouseEvent e) {
+        frame.setCursor(Cursor.getDefaultCursor());
     }
 }
